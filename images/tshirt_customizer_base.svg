@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 650" width="100%" height="100%" id="tshirtVector">
+  <defs>
+    <!-- Filter for realistic drop shadow -->
+    <filter id="teeShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="20" stdDeviation="25" flood-color="#090D16" flood-opacity="0.18"/>
+    </filter>
+    <!-- Shading Gradients -->
+    <linearGradient id="bodyShade" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.12" />
+      <stop offset="25%" stop-color="#FFFFFF" stop-opacity="0.05" />
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.12" />
+      <stop offset="75%" stop-color="#FFFFFF" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.12" />
+    </linearGradient>
+    <linearGradient id="sleeveLeftShade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.05" />
+    </linearGradient>
+    <linearGradient id="sleeveRightShade" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.05" />
+    </linearGradient>
+  </defs>
+
+  <g filter="url(#teeShadow)">
+    <!-- Base Shirt Shape with dynamic fill controlled by script/CSS -->
+    <path id="tshirtBodyPath" 
+          d="M 195 105 C 235 140 365 140 405 105 L 535 175 L 470 290 L 415 255 L 415 540 C 415 555 400 560 380 560 L 220 560 C 200 560 185 555 185 540 L 185 255 L 130 290 L 65 175 Z" 
+          fill="#18181B" stroke="rgba(0,0,0,0.15)" stroke-width="2" />
+
+    <!-- Shading Overlay for 3D realism -->
+    <path d="M 195 105 C 235 140 365 140 405 105 L 535 175 L 470 290 L 415 255 L 415 540 C 415 555 400 560 380 560 L 220 560 C 200 560 185 555 185 540 L 185 255 L 130 290 L 65 175 Z" 
+          fill="url(#bodyShade)" />
+
+    <!-- Inner Neck -->
+    <path d="M 230 115 C 265 135 335 135 370 115 C 345 95 255 95 230 115 Z" fill="#111827" opacity="0.8" />
+    <!-- Brand Tag Inside Collar -->
+    <rect x="275" y="112" width="50" height="22" rx="2" fill="#E2E8F0" opacity="0.9" />
+    <text x="300" y="123" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="7" fill="#0F172A" text-anchor="middle">SKB PRINTING</text>
+    <text x="300" y="130" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="5" fill="#DC2626" text-anchor="middle">DUMKIBAS • 100% COTTON</text>
+
+    <!-- Collar Ribbing -->
+    <path d="M 195 105 C 235 140 365 140 405 105 C 355 160 245 160 195 105 Z" 
+          fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="4" />
+    <path d="M 195 105 C 235 140 365 140 405 105 C 355 160 245 160 195 105 Z" 
+          fill="none" stroke="rgba(0,0,0,0.25)" stroke-width="2" />
+
+    <!-- Sleeve Stitch Details -->
+    <line x1="80" y1="190" x2="135" y2="280" stroke="rgba(0,0,0,0.12)" stroke-width="1.5" stroke-dasharray="3,3" />
+    <line x1="520" y1="190" x2="465" y2="280" stroke="rgba(0,0,0,0.12)" stroke-width="1.5" stroke-dasharray="3,3" />
+    
+    <!-- Hem Stitch Detail -->
+    <line x1="190" y1="545" x2="410" y2="545" stroke="rgba(0,0,0,0.15)" stroke-width="1.5" stroke-dasharray="4,4" />
+  </g>
+</svg>

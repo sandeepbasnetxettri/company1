@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | SKB T-Shirt Printing Dumkibas</title>
+  <meta name="description" content="Secure Admin Control Panel for SKB T-Shirt Printing Dumkibas, Nepal.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Chart.js for Live Analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Admin Stylesheet -->
+  <link rel="stylesheet" href="admin.css">
+</head>
+
+<body class="admin-body">
+
+  <!-- ========================================================================= -->
+  <!-- 1. SECURE ADMIN LOGIN SCREEN (OVERLAY IF NOT AUTHENTICATED) -->
+  <!-- ========================================================================= -->
+  <div class="login-wrapper" id="adminLoginScreen">
+    <div class="login-card">
+      <div class="login-brand">
+        <div class="brand-logo-icon">
+          <svg viewBox="0 0 40 40" class="logo-svg" fill="none" width="36" height="36">
+            <path
+              d="M10 8L17 4C20 9 29 9 32 4L39 8L35 18L30 15V36C30 37.5 29 38 27.5 38H21C19.5 38 18 37.5 18 36V15L13 18L10 8Z"
+              fill="#E63946" />
+            <circle cx="25" cy="22" r="3" fill="#FFFFFF" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h2>SKB.PRINTING</h2>
+          <span class="location-badge">Dumkibas, Nepal • Admin Panel</span>
+        </div>
+      </div>
+
+      <div class="login-header">
+        <h3>Secure Administrator Login</h3>
+        <p>Access store management, orders, custom designs, and inventory.</p>
+      </div>
+
+      <form id="adminLoginForm" onsubmit="handleAdminLogin(event)">
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Admin Email</label>
+          <div class="input-wrap">
+            <input type="email" id="loginEmail" class="form-input" placeholder="skbtshirtprinting@gmail.com" required
+              autocomplete="username">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">Password</label>
+          <div class="input-wrap password-wrap">
+            <input type="password" id="loginPassword" class="form-input" placeholder="••••••••••••" required
+              autocomplete="current-password">
+            <button type="button" class="btn-toggle-password" id="togglePasswordBtn"
+              title="Show/Hide Password">👁️</button>
+          </div>
+        </div>
+
+        <div class="login-error-msg" id="loginErrorMsg" style="display: none;"></div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg" id="loginSubmitBtn">
+          🔐 Log In to Dashboard
+        </button>
+      </form>
+
+      <div class="login-footer">
+        <p>🔒 Protected by cryptographic salt &amp; Scrypt hashing.</p>
+        <a href="index.html" class="back-to-site-link">← Return to Storefront</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 2. FORCED FIRST-TIME PASSWORD CHANGE MODAL -->
+  <!-- ========================================================================= -->
+  <div class="modal-overlay" id="firstLoginModal" style="display: none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title">🔒 Set New Administrator Password</h3>
+          <p class="modal-sub">For security reasons, you must set a permanent custom password on your first login.</p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <form id="forcePasswordChangeForm" onsubmit="handleForcePasswordChange(event)">
+          <div class="form-group">
+            <label class="form-label" for="newAdminPassword">New Secure Password (Min. 6 chars) *</label>
+            <input type="password" id="newAdminPassword" class="form-input" placeholder="Enter new strong password"
+              required minlength="6">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="confirmAdminPassword">Confirm New Password *</label>
+            <input type="password" id="confirmAdminPassword" class="form-input" placeholder="Re-enter new password"
+              required minlength="6">
+          </div>
+
+          <div class="password-strength-box" id="passwordStrengthBox">
+            <div class="strength-bar"><span id="strengthBarFill"></span></div>
+            <small id="strengthText">Password must be at least 6 characters.</small>
+          </div>
+
+          <div class="login-error-msg" id="changePassErrorMsg" style="display: none;"></div>
+
+          <div class="modal-actions mt-3">
+            <button type="submit" class="btn btn-primary btn-block btn-lg" id="saveNewPasswordBtn">
+              ✅ Update Password &amp; Enter Dashboard
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- 3. MAIN ADMIN APP INTERFACE -->
+  <!-- ========================================================================= -->
+  <div class="admin-app" id="adminAppLayout" style="display: none;">
+
+    <!-- Sidebar Navigation -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-brand" target="_blank" title="Open Storefront in New Tab">
+          <div class="logo-icon">
+            <svg viewBox="0 0 40 40" fill="none" width="28" height="28">
+              <path
+                d="M10 8L17 4C20 9 29 9 32 4L39 8L35 18L30 15V36C30 37.5 29 38 27.5 38H21C19.5 38 18 37.5 18 36V15L13 18L10 8Z"
+                fill="#E63946" />
+              <circle cx="25" cy="22" r="3" fill="#FFFFFF" />
+            </svg>
+          </div>
+          <div class="sidebar-brand-text">
+            <span class="brand-title">SKB<span class="dot">.</span>ADMIN</span>
+            <span class="brand-sub">Dumkibas Hub</span>
+          </div>
+        </a>
+        <button class="sidebar-close-btn" id="sidebarCloseBtn">&times;</button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul class="nav-links-list">
+          <li>
+            <button class="nav-item-btn active" data-view="dashboard">
+              <span class="nav-icon">📊</span>
+              <span class="nav-label">Dashboard</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item-btn" data-view="orders">
+              <span class="nav-icon">📦</span>
+              <span class="nav-label">Orders</span>
+              <span class="nav-badge" id="pendingOrdersBadge" style="display: none;">0</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item-btn" data-view="products">
+              <span class="nav-icon">👕</span>
+              <span class="nav-label">Products</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item-btn" data-view="custom-requests">
+              <span class="nav-icon">🎨</span>
+              <span class="nav-label">Custom Studio</span>
+              <span class="nav-badge" id="pendingCustomBadge" style="display: none;">0</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item-btn" data-view="customers">
+              <span class="nav-icon">👥</span>
+              <span class="nav-label">Customers</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item-btn" data-view="gallery">
+              <span class="nav-icon">🖼️</span>
+              <span class="nav-label">Design Gallery</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item-btn" data-view="settings">
+              <span class="nav-icon">⚙️</span>
+              <span class="nav-label">Website Settings</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item-btn" data-view="account">
+              <span class="nav-icon">👤</span>
+              <span class="nav-label">Admin Security</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="admin-user-pill">
+          <div class="user-avatar">SKB</div>
+          <div class="user-info">
+            <span class="user-email" id="sidebarAdminEmail">skbtshirtprinting@gmail.com</span>
+            <span class="user-role"><span class="status-dot"></span> Administrator</span>
+          </div>
+        </div>
+        <button class="btn btn-logout" onclick="handleAdminLogout()" title="Log out">
+          <span>🚪 Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content Area -->
+    <div class="admin-main">
+      <!-- Top Bar Header -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="topbar-toggle-btn" id="sidebarToggleBtn" aria-label="Toggle Sidebar Navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="topbar-title-group">
+            <h1 class="topbar-page-title" id="pageTitleHeading">Dashboard Overview</h1>
+            <span class="topbar-breadcrumb" id="pageBreadcrumb">SKB T-Shirt Printing Dumkibas</span>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+          <a href="index.html" target="_blank" class="btn btn-view-site" title="Open Storefront in New Tab">
+            <span>🌐 View Storefront</span>
+            <span class="external-icon">↗</span>
+          </a>
+          <button class="btn btn-refresh" onclick="refreshCurrentView()" title="Refresh Data">
+            <span>🔄 Refresh</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Views Container -->
+      <main class="admin-view-content" id="viewContainer">
+
+        <!-- =================================================================== -->
+        <!-- VIEW 1: DASHBOARD OVERVIEW -->
+        <!-- =================================================================== -->
+        <section class="admin-view active" id="view-dashboard">
+          <!-- KPI Stats Grid -->
+          <div class="kpi-grid">
+            <!-- 1. Total Sales -->
+            <div class="kpi-card highlight-card">
+              <div class="kpi-icon-box bg-emerald">💰</div>
+              <div class="kpi-data">
+                <span class="kpi-label">Total Revenue</span>
+                <h3 class="kpi-value" id="kpiTotalSales">Rs. 0</h3>
+                <span class="kpi-sub">Nepal COD Delivered &amp; Active</span>
+              </div>
+            </div>
+
+            <!-- 2. Total Orders -->
+            <div class="kpi-card">
+              <div class="kpi-icon-box bg-blue">📦</div>
+              <div class="kpi-data">
+                <span class="kpi-label">Total Orders</span>
+                <h3 class="kpi-value" id="kpiTotalOrders">0</h3>
+                <span class="kpi-sub">All-time order count</span>
+              </div>
+            </div>
+
+            <!-- 3. Pending Orders -->
+            <div class="kpi-card alert-card">
+              <div class="kpi-icon-box bg-amber">⏳</div>
+              <div class="kpi-data">
+                <span class="kpi-label">Pending Orders</span>
+                <h3 class="kpi-value" id="kpiPendingOrders">0</h3>
+                <span class="kpi-sub">Needs Dumkibas review</span>
+              </div>
+            </div>
+
+            <!-- 4. Processing & Shipped -->
+            <div class="kpi-card">
+              <div class="kpi-icon-box bg-purple">🚚</div>
+              <div class="kpi-data">
+                <span class="kpi-label">In Transit / Shipped</span>
+                <h3 class="kpi-value" id="kpiShippedOrders">0</h3>
+                <span class="kpi-sub">Delivering across Nepal</span>
+              </div>
+            </div>
+
+            <!-- 5. Delivered Orders -->
+            <div class="kpi-card">
+              <div class="kpi-icon-box bg-green">✅</div>
+              <div class="kpi-data">
+                <span class="kpi-label">Delivered Orders</span>
+                <h3 class="kpi-value" id="kpiDeliveredOrders">0</h3>
+                <span class="kpi-sub">Successfully collected</span>
+              </div>
+            </div>
+
+            <!-- 6. Total Products -->
+            <div class="kpi-card">
+              <div class="kpi-icon-box bg-rose">👕</div>
+              <div class="kpi-data">
+                <span class="kpi-label">Total Catalog Products</span>
+                <h3 class="kpi-value" id="kpiTotalProducts">0</h3>
+                <span class="kpi-sub" id="kpiLowStockText">0 low stock items</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart & Order Pipeline Section -->
+          <div class="dashboard-analytics-grid mt-4">
+            <!-- Left: Sales Trend Chart -->
+            <div class="chart-card">
+              <div class="card-header-flex">
+                <div>
+                  <h3 class="card-title">📈 Sales &amp; Order Trends</h3>
+                  <p class="card-sub">Daily revenue breakdown</p>
+                </div>
+                <span class="chart-tag">Live Database</span>
+              </div>
+              <div class="chart-wrapper">
+                <canvas id="salesTrendsChart" height="230"></canvas>
+              </div>
+            </div>
+
+            <!-- Right: Order Status Distribution -->
+            <div class="chart-card">
+              <div class="card-header-flex">
+                <div>
+                  <h3 class="card-title">🍩 Order Status Breakdown</h3>
+                  <p class="card-sub">Current order progression</p>
+                </div>
+              </div>
+              <div class="chart-wrapper donut-wrapper">
+                <canvas id="orderStatusChart" height="230"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Orders Section -->
+          <div class="admin-card mt-4">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-title">Recent Orders</h3>
+                <p class="card-sub">Latest customer purchases across Nepal</p>
+              </div>
+              <button class="btn btn-secondary btn-sm" onclick="switchView('orders')">
+                View All Orders →
+              </button>
+            </div>
+
+            <div class="table-responsive mt-2">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Destination (Nepal)</th>
+                    <th>Items</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="dashboardRecentOrdersTbody">
+                  <!-- Dynamic JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- VIEW 2: ORDERS MANAGEMENT -->
+        <!-- =================================================================== -->
+        <section class="admin-view" id="view-orders">
+          <div class="admin-card">
+            <!-- Filters & Search Toolbar -->
+            <div class="table-toolbar">
+              <div class="search-input-wrap">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="orderSearchInput" class="form-input"
+                  placeholder="Search by Order ID (SKB-2026-...), Customer Name, Phone, City...">
+              </div>
+
+              <div class="status-filter-pills" id="orderStatusFilters">
+                <button class="filter-btn active" data-status="all">All Orders</button>
+                <button class="filter-btn" data-status="Pending">Pending</button>
+                <button class="filter-btn" data-status="Confirmed">Confirmed</button>
+                <button class="filter-btn" data-status="Processing">Processing</button>
+                <button class="filter-btn" data-status="Shipped">Shipped</button>
+                <button class="filter-btn" data-status="Delivered">Delivered</button>
+                <button class="filter-btn" data-status="Cancelled">Cancelled</button>
+              </div>
+            </div>
+
+            <!-- Orders Table Container -->
+            <div class="table-responsive mt-3">
+              <table class="admin-table" id="ordersTable">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer Details</th>
+                    <th>Nepal Destination Address</th>
+                    <th>Ordered Items</th>
+                    <th>Grand Total</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="ordersTableBody">
+                  <!-- Injected via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+
+            <div class="empty-state-card" id="emptyOrdersState" style="display: none;">
+              <div class="empty-icon">🔍</div>
+              <h4>No orders match your filter</h4>
+              <p>Try clearing your search query or choosing another status tab.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- VIEW 3: PRODUCTS MANAGEMENT -->
+        <!-- =================================================================== -->
+        <section class="admin-view" id="view-products">
+          <div class="admin-card">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-title">Product Catalog Management</h3>
+                <p class="card-sub">Manage available T-shirts, prices, stock, sizes, and colors</p>
+              </div>
+              <button class="btn btn-primary" onclick="openAddProductModal()">
+                ➕ Add New Product
+              </button>
+            </div>
+
+            <!-- Category & Search Toolbar -->
+            <div class="table-toolbar mt-3">
+              <div class="search-input-wrap">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="productSearchInput" class="form-input"
+                  placeholder="Search products by name, category, description...">
+              </div>
+              <div class="category-filter-select">
+                <select id="productCategoryFilter" class="form-select">
+                  <option value="all">All Categories</option>
+                  <option value="streetwear">Graphic &amp; Oversized</option>
+                  <option value="custom">Custom Name &amp; Photo</option>
+                  <option value="nepali">Nepali Quotes</option>
+                  <option value="couple">Couple Sets</option>
+                  <option value="events">Birthday &amp; Team</option>
+                  <option value="corporate">Corporate / Bulk</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Products Grid Table -->
+            <div class="table-responsive mt-3">
+              <table class="admin-table" id="productsTable">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Price (Rs.)</th>
+                    <th>Discount</th>
+                    <th>Stock</th>
+                    <th>Sizes &amp; Colors</th>
+                    <th>Featured</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="productsTableBody">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- VIEW 4: CUSTOM STUDIO REQUESTS -->
+        <!-- =================================================================== -->
+        <section class="admin-view" id="view-custom-requests">
+          <div class="admin-card">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-title">Custom T-Shirt Design Requests</h3>
+                <p class="card-sub">Customized customer artwork, typography, and bulk printing inquiries</p>
+              </div>
+              <div class="status-filter-pills" id="customStatusFilters">
+                <button class="filter-btn active" data-custom-status="all">All Requests</button>
+                <button class="filter-btn" data-custom-status="Pending">Pending</button>
+                <button class="filter-btn" data-custom-status="Approved">Approved</button>
+                <button class="filter-btn" data-custom-status="Processing">Processing</button>
+                <button class="filter-btn" data-custom-status="Completed">Completed</button>
+                <button class="filter-btn" data-custom-status="Rejected">Rejected</button>
+              </div>
+            </div>
+
+            <div class="table-responsive mt-3">
+              <table class="admin-table" id="customRequestsTable">
+                <thead>
+                  <tr>
+                    <th>Req ID</th>
+                    <th>Customer</th>
+                    <th>T-Shirt Specs</th>
+                    <th>Design / Artwork</th>
+                    <th>Placement &amp; Text</th>
+                    <th>Quantity</th>
+                    <th>Est. Total</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="customRequestsTableBody">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <div class="empty-state-card" id="emptyCustomState" style="display: none;">
+              <div class="empty-icon">🎨</div>
+              <h4>No custom requests found</h4>
+              <p>Customer designs submitted via the studio will show up here.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- VIEW 5: CUSTOMER DIRECTORY -->
+        <!-- =================================================================== -->
+        <section class="admin-view" id="view-customers">
+          <div class="admin-card">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-title">Customer Directory</h3>
+                <p class="card-sub">Verified customer orders and Nepal delivery destination directory</p>
+              </div>
+              <div class="search-input-wrap">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="customerSearchInput" class="form-input"
+                  placeholder="Search customer name, phone, city...">
+              </div>
+            </div>
+
+            <div class="table-responsive mt-3">
+              <table class="admin-table" id="customersTable">
+                <thead>
+                  <tr>
+                    <th>Customer Name</th>
+                    <th>Mobile Phone</th>
+                    <th>Email</th>
+                    <th>Primary Location</th>
+                    <th>Total Orders</th>
+                    <th>Lifetime Spend</th>
+                    <th>Last Order Date</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="customersTableBody">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- VIEW 6: DESIGN GALLERY SHOWCASE -->
+        <!-- =================================================================== -->
+        <section class="admin-view" id="view-gallery">
+          <div class="admin-card">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-title">SKB Dumkibas Print Gallery (31 Authentic Works)</h3>
+                <p class="card-sub">Real workshop t-shirt prints showcased on the customer website</p>
+              </div>
+              <div class="gallery-category-pills" id="adminGalleryFilters">
+                <button class="filter-btn active" data-gal-cat="all">All (31)</button>
+                <button class="filter-btn" data-gal-cat="streetwear">Streetwear</button>
+                <button class="filter-btn" data-gal-cat="couple">Couple Sets</button>
+                <button class="filter-btn" data-gal-cat="photo">Photo Prints</button>
+                <button class="filter-btn" data-gal-cat="events">Birthday &amp; Team</button>
+                <button class="filter-btn" data-gal-cat="nepali">Nepali Pride</button>
+              </div>
+            </div>
+
+            <div class="admin-gallery-grid mt-3" id="adminGalleryGrid">
+              <!-- Dynamically populated 31 photos from image/ -->
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- VIEW 7: WEBSITE SETTINGS -->
+        <!-- =================================================================== -->
+        <section class="admin-view" id="view-settings">
+          <div class="admin-card">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-title">Website Configuration &amp; Business Settings</h3>
+                <p class="card-sub">Update store contact details, delivery charges, COD options, and banners</p>
+              </div>
+            </div>
+
+            <form id="websiteSettingsForm" onsubmit="handleSaveSettings(event)" class="mt-3">
+              <div class="settings-grid">
+                <!-- Business Info -->
+                <div class="settings-section-card">
+                  <h4 class="settings-sec-title">🏢 Business Information</h4>
+
+                  <div class="form-group">
+                    <label class="form-label" for="settingBusinessName">Business Name *</label>
+                    <input type="text" id="settingBusinessName" class="form-input" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="settingTagline">Store Tagline</label>
+                    <input type="text" id="settingTagline" class="form-input">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="settingAddress">Physical Dumkibas Address *</label>
+                    <input type="text" id="settingAddress" class="form-input" required>
+                  </div>
+                </div>
+
+                <!-- Contact & WhatsApp -->
+                <div class="settings-section-card">
+                  <h4 class="settings-sec-title">📞 Contact &amp; Ordering Hotlines</h4>
+
+                  <div class="form-group">
+                    <label class="form-label" for="settingPhone">Official Phone Number *</label>
+                    <input type="text" id="settingPhone" class="form-input" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="settingWhatsapp">WhatsApp Order Number (Nepal format: 977...)
+                      *</label>
+                    <input type="text" id="settingWhatsapp" class="form-input" required>
+                    <small class="form-hint">Used for all direct WhatsApp order buttons and customizer links.</small>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="settingEmail">Official Business Email *</label>
+                    <input type="email" id="settingEmail" class="form-input" required>
+                  </div>
+                </div>
+
+                <!-- Delivery & COD Policy -->
+                <div class="settings-section-card">
+                  <h4 class="settings-sec-title">🚚 Nepal Delivery &amp; COD Pricing</h4>
+
+                  <div class="form-group">
+                    <label class="form-label" for="settingDeliveryFee">Flat COD Delivery Charge (Rs.) *</label>
+                    <input type="number" id="settingDeliveryFee" class="form-input" min="0" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="settingFreeThreshold">Free Delivery Minimum Order (Rs.) *</label>
+                    <input type="number" id="settingFreeThreshold" class="form-input" min="0" required>
+                    <small class="form-hint">Orders at or above this amount automatically receive Rs. 0 delivery.</small>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="save-address-checkbox">
+                      <input type="checkbox" id="settingCodEnabled" checked>
+                      <span class="checkbox-custom"></span>
+                      <span class="checkbox-label-text"><strong>Enable Cash on Delivery (COD) Across Nepal</strong></span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Homepage Banners & Social Links -->
+                <div class="settings-section-card">
+                  <h4 class="settings-sec-title">🌐 Homepage Copy &amp; Social Links</h4>
+
+                  <div class="form-group">
+                    <label class="form-label" for="settingHeroTitle">Hero Title</label>
+                    <input type="text" id="settingHeroTitle" class="form-input">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="settingHeroHighlight">Hero Highlighted Text</label>
+                    <input type="text" id="settingHeroHighlight" class="form-input">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="settingHeroSubtitle">Hero Subtitle</label>
+                    <textarea id="settingHeroSubtitle" class="form-textarea" rows="2"></textarea>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group flex-1">
+                      <label class="form-label" for="settingFacebook">Facebook URL</label>
+                      <input type="url" id="settingFacebook" class="form-input">
+                    </div>
+                    <div class="form-group flex-1">
+                      <label class="form-label" for="settingInstagram">Instagram URL</label>
+                      <input type="url" id="settingInstagram" class="form-input">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="settings-actions-footer mt-4">
+                <button type="submit" class="btn btn-primary btn-lg" id="saveSettingsBtn">
+                  💾 Save All Website Settings
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- =================================================================== -->
+        <!-- VIEW 8: ADMIN ACCOUNT & SECURITY -->
+        <!-- =================================================================== -->
+        <section class="admin-view" id="view-account">
+          <div class="admin-card">
+            <h3 class="card-title">Admin Account &amp; Password Security</h3>
+            <p class="card-sub">Manage your login credentials and active session security</p>
+
+            <div class="account-grid mt-4">
+              <!-- Left: Change Password -->
+              <div class="account-card-col">
+                <h4 class="settings-sec-title">🔑 Change Admin Password</h4>
+                <form id="changeAdminPasswordForm" onsubmit="handleChangePassword(event)">
+                  <div class="form-group">
+                    <label class="form-label" for="accCurrentPassword">Current Password *</label>
+                    <input type="password" id="accCurrentPassword" class="form-input" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="accNewPassword">New Password (Min. 6 chars) *</label>
+                    <input type="password" id="accNewPassword" class="form-input" minlength="6" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="accConfirmPassword">Confirm New Password *</label>
+                    <input type="password" id="accConfirmPassword" class="form-input" minlength="6" required>
+                  </div>
+
+                  <div class="login-error-msg" id="accPassErrorMsg" style="display:none;"></div>
+
+                  <button type="submit" class="btn btn-primary mt-2" id="updatePasswordSubmitBtn">
+                    Update Password
+                  </button>
+                </form>
+              </div>
+
+              <!-- Right: Active Session & Security Overview -->
+              <div class="account-card-col">
+                <h4 class="settings-sec-title">🛡️ Security &amp; Session Status</h4>
+                <div class="session-info-list">
+                  <div class="session-info-item">
+                    <span class="info-label">Active Admin User:</span>
+                    <span class="info-val" id="accAdminUsername">skbtshirtprinting@gmail.com</span>
+                  </div>
+                  <div class="session-info-item">
+                    <span class="info-label">Session Token Type:</span>
+                    <span class="info-val">HttpOnly Cryptographic Token</span>
+                  </div>
+                  <div class="session-info-item">
+                    <span class="info-label">Session Expiration:</span>
+                    <span class="info-val">24 Hours (Sliding Window)</span>
+                  </div>
+                  <div class="session-info-item">
+                    <span class="info-label">Password Hashing:</span>
+                    <span class="info-val">Node.js Scrypt + 16-byte Cryptographic Salt</span>
+                  </div>
+                  <div class="session-info-item">
+                    <span class="info-label">Brute-Force Rate Limiting:</span>
+                    <span class="info-val text-green">Active (5 Attempts / 15m Lock)</span>
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <button type="button" class="btn btn-danger" onclick="handleAdminLogout()">
+                    🚪 Log Out of Admin Session
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: ORDER DETAILS & STATUS CHANGER -->
+  <!-- ========================================================================= -->
+  <div class="modal-overlay" id="orderDetailsModal" style="display: none;">
+    <div class="modal-card modal-lg">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" id="orderModalTitle">Order Details</h3>
+          <p class="modal-sub" id="orderModalDate">Placed on ...</p>
+        </div>
+        <button class="modal-close-btn" onclick="closeOrderModal()">&times;</button>
+      </div>
+
+      <div class="modal-body" id="orderDetailsModalBody">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: ADD / EDIT PRODUCT -->
+  <!-- ========================================================================= -->
+  <div class="modal-overlay" id="productFormModal" style="display: none;">
+    <div class="modal-card modal-lg">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" id="productModalTitle">Add New Product</h3>
+          <p class="modal-sub">Fill in the product specifications and image</p>
+        </div>
+        <button class="modal-close-btn" onclick="closeProductModal()">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <form id="productForm" onsubmit="handleProductFormSubmit(event)">
+          <input type="hidden" id="prodEditId">
+
+          <div class="form-row">
+            <div class="form-group flex-2">
+              <label class="form-label" for="prodName">Product Name *</label>
+              <input type="text" id="prodName" class="form-input" placeholder="e.g. Classic Oversized Graphic Tee"
+                required>
+            </div>
+            <div class="form-group flex-1">
+              <label class="form-label" for="prodCategory">Category *</label>
+              <select id="prodCategory" class="form-select" required>
+                <option value="streetwear">Graphic &amp; Oversized</option>
+                <option value="custom">Custom Name &amp; Photo</option>
+                <option value="nepali">Nepali Quotes</option>
+                <option value="couple">Couple Sets</option>
+                <option value="events">Birthday &amp; Team</option>
+                <option value="corporate">Corporate / Bulk</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label class="form-label" for="prodPrice">Selling Price (Rs.) *</label>
+              <input type="number" id="prodPrice" class="form-input" placeholder="899" min="1" required>
+            </div>
+            <div class="form-group flex-1">
+              <label class="form-label" for="prodDiscountPrice">Original / Cut Price (Rs.)</label>
+              <input type="number" id="prodDiscountPrice" class="form-input" placeholder="1199" min="1">
+            </div>
+            <div class="form-group flex-1">
+              <label class="form-label" for="prodStock">Stock Quantity *</label>
+              <input type="number" id="prodStock" class="form-input" placeholder="50" min="0" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="prodDescription">Product Description *</label>
+            <textarea id="prodDescription" class="form-textarea" rows="3"
+              placeholder="e.g. High-density DTF printing on 220 GSM 100% bio-washed combed cotton..."
+              required></textarea>
+          </div>
+
+          <!-- Sizes Checkboxes -->
+          <div class="form-group">
+            <label class="form-label">Available Sizes:</label>
+            <div class="checkbox-pill-group">
+              <label class="checkbox-pill"><input type="checkbox" name="prodSizes" value="S" checked> S</label>
+              <label class="checkbox-pill"><input type="checkbox" name="prodSizes" value="M" checked> M</label>
+              <label class="checkbox-pill"><input type="checkbox" name="prodSizes" value="L" checked> L</label>
+              <label class="checkbox-pill"><input type="checkbox" name="prodSizes" value="XL" checked> XL</label>
+              <label class="checkbox-pill"><input type="checkbox" name="prodSizes" value="XXL" checked> XXL</label>
+            </div>
+          </div>
+
+          <!-- Colors Input -->
+          <div class="form-group">
+            <label class="form-label" for="prodColorsInput">Colors (comma separated):</label>
+            <input type="text" id="prodColorsInput" class="form-input"
+              placeholder="e.g. Midnight Black, Pure White, Royal Navy, Maroon Red"
+              value="Midnight Black, Pure White, Royal Navy">
+          </div>
+
+          <!-- Product Image URL / Upload -->
+          <div class="form-row align-center">
+            <div class="form-group flex-2">
+              <label class="form-label" for="prodImageUrl">Image URL or Local Path *</label>
+              <input type="text" id="prodImageUrl" class="form-input" placeholder="images/prod_black_graphic.jpg"
+                required>
+            </div>
+            <div class="form-group flex-1">
+              <label class="form-label">Or Upload File:</label>
+              <input type="file" id="prodImageFile" accept="image/*" class="form-file-input">
+            </div>
+          </div>
+
+          <div class="form-row mt-2">
+            <div class="form-group flex-1">
+              <label class="form-label" for="prodBadge">Promo Badge Tag (Optional)</label>
+              <input type="text" id="prodBadge" class="form-input" placeholder="e.g. 🔥 Bestseller, ⚡ Trending">
+            </div>
+            <div class="form-group flex-1 d-flex gap-3 align-center mt-3">
+              <label class="save-address-checkbox">
+                <input type="checkbox" id="prodFeatured">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label-text">Featured Product</span>
+              </label>
+              <label class="save-address-checkbox">
+                <input type="checkbox" id="prodActive" checked>
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label-text">Active in Store</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="modal-actions mt-3">
+            <button type="button" class="btn btn-secondary" onclick="closeProductModal()">Cancel</button>
+            <button type="submit" class="btn btn-primary btn-lg" id="saveProductBtn">Save Product</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="adminToastContainer"></div>
+
+  <!-- Admin Application Logic -->
+  <script src="admin.js"></script>
+</body>
+
+</html>

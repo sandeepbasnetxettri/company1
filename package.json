@@ -1,0 +1,21 @@
+{
+  "name": "skb-tshirt-printing-dumkibas",
+  "version": "2.0.0",
+  "description": "Complete E-Commerce Website and Real Admin Dashboard for SKB T-Shirt Printing Dumkibas, Nepal",
+  "main": "serve.js",
+  "scripts": {
+    "start": "node serve.js",
+    "dev": "node serve.js"
+  },
+  "keywords": [
+    "tshirt-printing",
+    "nepal",
+    "dumkibas",
+    "ecommerce",
+    "cod-nepal",
+    "admin-dashboard",
+    "custom-tshirt"
+  ],
+  "author": "SKB T-Shirt Printing Dumkibas",
+  "license": "ISC"
+}

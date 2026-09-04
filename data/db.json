@@ -1,0 +1,911 @@
+{
+  "settings": {
+    "businessName": "SKB T-Shirt Printing Dumkibas",
+    "tagline": "Custom T-Shirts. Your Design. Your Style.",
+    "logo": "images/logo.svg",
+    "phone": "+977 9768827327",
+    "whatsapp": "9779768827327",
+    "email": "skbtshirtprinting@gmail.com",
+    "address": "Dumkibas Main Bazaar, Nawalparasi, Gandaki Province, Nepal",
+    "flatDeliveryFee": 100,
+    "freeDeliveryThreshold": 2000,
+    "codEnabled": true,
+    "heroTitle": "Custom T-Shirts",
+    "heroHighlight": "Made Your Way",
+    "heroSubtitle": "Premium T-Shirt Printing in Dumkibas — Delivered Across Nepal with Cash on Delivery (COD). Top-tier DTF & screen printing, 100% bio-washed cotton.",
+    "facebookUrl": "https://facebook.com/skbtshirtprinting",
+    "instagramUrl": "https://instagram.com/skbtshirtprinting",
+    "tiktokUrl": "https://tiktok.com/@skbtshirtprinting"
+  },
+  "admin": {
+    "username": "skbtshirtprinting@gmail.com",
+    "salt": "0e72f909015f2d67b99953416fd93a0f",
+    "passwordHash": "ac38c96820d4f8815d6e7c9d4c6615e890de97f69ef69109198fd79f1b7135967e374f969e0ab550e94c1f04870eaca4484af59d7a7c5e2c25d94ac06c518f81",
+    "isFirstLogin": false,
+    "updatedAt": "2026-08-27T02:04:39.775Z"
+  },
+  "orderCounter": 114,
+  "products": [
+    {
+      "id": "skb-001",
+      "name": "Premium Black Printed T-Shirt",
+      "category": "streetwear",
+      "description": "High-density cyber streetwear graphic print on 220 GSM 100% bio-washed combed cotton. Resistant to 50+ machine washes without fading or cracking.",
+      "price": 899,
+      "discountPrice": 1199,
+      "stock": 40,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "colors": [
+        {
+          "name": "Midnight Black",
+          "hex": "#18181B"
+        },
+        {
+          "name": "Charcoal Grey",
+          "hex": "#334155"
+        },
+        {
+          "name": "Royal Navy",
+          "hex": "#1E3A8A"
+        }
+      ],
+      "image": "images/prod_black_graphic.jpg",
+      "featured": true,
+      "active": true,
+      "badge": "🔥 Bestseller",
+      "createdAt": "2026-08-20T10:00:00.000Z",
+      "updatedAt": "2026-08-27T07:00:00.000Z"
+    },
+    {
+      "id": "skb-002",
+      "name": "Custom Name Printed T-Shirt",
+      "category": "custom",
+      "description": "Sleek minimalist typography with your personalized name, jersey number, or slogan. Printed with ultra-crisp DTF ink in Dumkibas studio.",
+      "price": 799,
+      "discountPrice": 999,
+      "stock": 60,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "colors": [
+        {
+          "name": "Pure White",
+          "hex": "#FFFFFF"
+        },
+        {
+          "name": "Midnight Black",
+          "hex": "#18181B"
+        },
+        {
+          "name": "Maroon Red",
+          "hex": "#7F1D1D"
+        }
+      ],
+      "image": "images/prod_custom_name.jpg",
+      "featured": true,
+      "active": true,
+      "badge": "✨ Customizable",
+      "createdAt": "2026-08-21T11:30:00.000Z",
+      "updatedAt": "2026-08-27T07:00:00.000Z"
+    },
+    {
+      "id": "skb-003",
+      "name": "Couple Matching T-Shirt Set (2 Pcs)",
+      "category": "couple",
+      "description": "Matching King & Queen royal crown printed couple set. Includes 2 premium cotton tees. Perfect anniversary, wedding, & Valentine gift in Nepal.",
+      "price": 1499,
+      "discountPrice": 1899,
+      "stock": 25,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "colors": [
+        {
+          "name": "Black & White Pair",
+          "hex": "#18181B"
+        },
+        {
+          "name": "Navy Blue Pair",
+          "hex": "#1E3A8A"
+        },
+        {
+          "name": "Maroon Pair",
+          "hex": "#7F1D1D"
+        }
+      ],
+      "image": "images/prod_couple_tshirt.jpg",
+      "featured": true,
+      "active": true,
+      "badge": "❤️ Couple Special",
+      "createdAt": "2026-08-22T09:15:00.000Z",
+      "updatedAt": "2026-08-27T07:00:00.000Z"
+    },
+    {
+      "id": "skb-004",
+      "name": "Oversized Graphic Streetwear T-Shirt",
+      "category": "streetwear",
+      "description": "Trendy boxy oversized streetwear silhouette with vintage mountain & wildlife back print. Super breathable heavy cotton.",
+      "price": 999,
+      "discountPrice": 1299,
+      "stock": 38,
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "colors": [
+        {
+          "name": "Washed Charcoal",
+          "hex": "#334155"
+        },
+        {
+          "name": "Pitch Black",
+          "hex": "#18181B"
+        },
+        {
+          "name": "Forest Green",
+          "hex": "#14532D"
+        }
+      ],
+      "image": "images/prod_oversized_tshirt.jpg",
+      "featured": true,
+      "active": true,
+      "badge": "⚡ Trending",
+      "createdAt": "2026-08-23T14:20:00.000Z",
+      "updatedAt": "2026-08-27T07:00:00.000Z"
+    },
+    {
+      "id": "skb-005",
+      "name": "Birthday Special Custom T-Shirt",
+      "category": "events",
+      "description": "Celebrate milestones with custom birth year and metallic gold typography. Personalized names and age available upon order.",
+      "price": 849,
+      "discountPrice": 1099,
+      "stock": 49,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "colors": [
+        {
+          "name": "Black & Gold",
+          "hex": "#18181B"
+        },
+        {
+          "name": "White & Gold",
+          "hex": "#FFFFFF"
+        }
+      ],
+      "image": "images/prod_birthday_tshirt.jpg",
+      "featured": false,
+      "active": true,
+      "badge": "🎉 Birthday Edition",
+      "createdAt": "2026-08-24T16:00:00.000Z",
+      "updatedAt": "2026-08-27T07:00:00.000Z"
+    },
+    {
+      "id": "skb-006",
+      "name": "Custom Photo Printed T-Shirt",
+      "category": "custom",
+      "description": "Print any personal portrait, family photo, or memory in stunning photographic HD resolution. Soft-feel breathable finish.",
+      "price": 899,
+      "discountPrice": 1199,
+      "stock": 42,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "colors": [
+        {
+          "name": "Pure White",
+          "hex": "#FFFFFF"
+        },
+        {
+          "name": "Heather Grey",
+          "hex": "#E2E8F0"
+        },
+        {
+          "name": "Black",
+          "hex": "#18181B"
+        }
+      ],
+      "image": "images/prod_custom_photo.svg",
+      "featured": false,
+      "active": true,
+      "badge": "📸 Photo Print",
+      "createdAt": "2026-08-25T12:00:00.000Z",
+      "updatedAt": "2026-08-27T07:00:00.000Z"
+    },
+    {
+      "id": "skb-007",
+      "name": "Nepali Quote Graphic T-Shirt",
+      "category": "nepali",
+      "description": "'नेपाली मन, नेपाली शान • Born in Nepal' aesthetic Himalayan quote t-shirt with Devanagari calligraphy.",
+      "price": 799,
+      "discountPrice": 999,
+      "stock": 55,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "colors": [
+        {
+          "name": "Royal Navy",
+          "hex": "#1E3A8A"
+        },
+        {
+          "name": "Midnight Black",
+          "hex": "#18181B"
+        },
+        {
+          "name": "Crimson Red",
+          "hex": "#991B1B"
+        }
+      ],
+      "image": "images/prod_nepali_quote.svg",
+      "featured": true,
+      "active": true,
+      "badge": "🇳🇵 Nepali Pride",
+      "createdAt": "2026-08-25T15:45:00.000Z",
+      "updatedAt": "2026-08-27T07:00:00.000Z"
+    },
+    {
+      "id": "skb-008",
+      "name": "Team / Corporate Event Custom T-Shirt",
+      "category": "corporate",
+      "description": "Customized sports jersey & event tees for tournaments, colleges, companies, and festivals. Special bulk rates available.",
+      "price": 699,
+      "discountPrice": 899,
+      "stock": 100,
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "colors": [
+        {
+          "name": "Royal Navy",
+          "hex": "#1E3A8A"
+        },
+        {
+          "name": "Midnight Black",
+          "hex": "#18181B"
+        },
+        {
+          "name": "Forest Green",
+          "hex": "#14532D"
+        }
+      ],
+      "image": "images/prod_team_event.svg",
+      "featured": false,
+      "active": true,
+      "badge": "🏆 Bulk / Event",
+      "createdAt": "2026-08-26T08:00:00.000Z",
+      "updatedAt": "2026-08-27T07:00:00.000Z"
+    }
+  ],
+  "orders": [],
+  "customRequests": [
+    {
+      "id": "CUST-737738",
+      "customer": {
+        "name": "Website Customizer Customer",
+        "phone": "9768827327",
+        "email": ""
+      },
+      "tshirtType": "Round Neck Classic",
+      "color": "Midnight Black",
+      "size": "M",
+      "quantity": 1,
+      "placement": "chest",
+      "customText": "SKB STREETWEAR",
+      "font": "'Outfit', sans-serif",
+      "textColor": "#FFFFFF",
+      "uploadedDesign": "",
+      "notes": "",
+      "estimatedPrice": 899,
+      "status": "Rejected",
+      "createdAt": "2026-08-30T13:15:37.738Z",
+      "updatedAt": "2026-08-30T13:17:44.002Z"
+    },
+    {
+      "id": "CUST-172057",
+      "customer": {
+        "name": "Website Customizer Customer",
+        "phone": "9768827327",
+        "email": ""
+      },
+      "tshirtType": "Round Neck Classic",
+      "color": "Midnight Black",
+      "size": "M",
+      "quantity": 1,
+      "placement": "back",
+      "customText": "SKB STREETWEAR",
+      "font": "'Outfit', sans-serif",
+      "textColor": "#FFFFFF",
+      "uploadedDesign": "",
+      "notes": "",
+      "estimatedPrice": 899,
+      "status": "Rejected",
+      "createdAt": "2026-08-30T13:06:12.058Z",
+      "updatedAt": "2026-08-30T13:17:46.194Z"
+    },
+    {
+      "id": "CUST-497118",
+      "customer": {
+        "name": "Website Customizer Customer",
+        "phone": "9768827327",
+        "email": ""
+      },
+      "tshirtType": "Round Neck Classic",
+      "color": "Midnight Black",
+      "size": "M",
+      "quantity": 1,
+      "placement": "chest",
+      "customText": "SKB STREETWEAR",
+      "font": "'Outfit', sans-serif",
+      "textColor": "#FFFFFF",
+      "uploadedDesign": "",
+      "notes": "",
+      "estimatedPrice": 899,
+      "status": "Rejected",
+      "createdAt": "2026-08-30T12:54:57.118Z",
+      "updatedAt": "2026-08-30T13:00:53.193Z"
+    },
+    {
+      "id": "CUST-492589",
+      "customer": {
+        "name": "Website Customizer Customer",
+        "phone": "9768827327",
+        "email": ""
+      },
+      "tshirtType": "Round Neck Classic",
+      "color": "Midnight Black",
+      "size": "M",
+      "quantity": 1,
+      "placement": "chest",
+      "customText": "SKB STREETWEAR",
+      "font": "'Outfit', sans-serif",
+      "textColor": "#FFFFFF",
+      "uploadedDesign": "",
+      "notes": "",
+      "estimatedPrice": 899,
+      "status": "Rejected",
+      "createdAt": "2026-08-30T12:54:52.589Z",
+      "updatedAt": "2026-08-30T13:00:55.162Z"
+    },
+    {
+      "id": "CUST-459292",
+      "customer": {
+        "name": "Website Customizer Customer",
+        "phone": "9768827327",
+        "email": ""
+      },
+      "tshirtType": "Round Neck Classic",
+      "color": "Midnight Black",
+      "size": "M",
+      "quantity": 1,
+      "placement": "chest",
+      "customText": "SKB STREETWEAR",
+      "font": "'Outfit', sans-serif",
+      "textColor": "#FFFFFF",
+      "uploadedDesign": "",
+      "notes": "",
+      "estimatedPrice": 899,
+      "status": "Rejected",
+      "createdAt": "2026-08-30T12:54:19.292Z",
+      "updatedAt": "2026-08-30T13:00:58.867Z"
+    },
+    {
+      "id": "CUST-453984",
+      "customer": {
+        "name": "Website Customizer Customer",
+        "phone": "9768827327",
+        "email": ""
+      },
+      "tshirtType": "Round Neck Classic",
+      "color": "Midnight Black",
+      "size": "M",
+      "quantity": 1,
+      "placement": "chest",
+      "customText": "SKB STREETWEAR",
+      "font": "'Outfit', sans-serif",
+      "textColor": "#FFFFFF",
+      "uploadedDesign": "",
+      "notes": "",
+      "estimatedPrice": 899,
+      "status": "Rejected",
+      "createdAt": "2026-08-30T12:54:13.984Z",
+      "updatedAt": "2026-08-30T13:01:01.536Z"
+    },
+    {
+      "id": "CUST-447003",
+      "customer": {
+        "name": "Website Customizer Customer",
+        "phone": "9768827327",
+        "email": ""
+      },
+      "tshirtType": "Round Neck Classic",
+      "color": "Midnight Black",
+      "size": "M",
+      "quantity": 1,
+      "placement": "chest",
+      "customText": "SKB STREETWEAR",
+      "font": "'Outfit', sans-serif",
+      "textColor": "#FFFFFF",
+      "uploadedDesign": "",
+      "notes": "",
+      "estimatedPrice": 899,
+      "status": "Rejected",
+      "createdAt": "2026-08-30T12:54:07.004Z",
+      "updatedAt": "2026-08-30T13:01:03.791Z"
+    },
+    {
+      "id": "CUST-REQ-001",
+      "customer": {
+        "name": "Aakash Adhikari",
+        "phone": "9867543210",
+        "email": "aakash.adh@gmail.com"
+      },
+      "tshirtType": "Oversized Streetwear",
+      "color": "Midnight Black",
+      "size": "XL",
+      "quantity": 12,
+      "placement": "Front + Back",
+      "customText": "NEPAL CYBER REVOLUTION",
+      "font": "'Outfit', sans-serif",
+      "textColor": "#FFFFFF",
+      "uploadedDesign": "",
+      "estimatedPrice": 10788,
+      "notes": "College tech festival committee bulk order. Need delivery in Pokhara before next Tuesday.",
+      "status": "Rejected",
+      "createdAt": "2026-08-26T14:10:00.000Z",
+      "updatedAt": "2026-08-30T13:01:07.660Z"
+    }
+  ],
+  "customers": [
+    {
+      "id": "cust-9812345678",
+      "name": "Sandeep Basnet",
+      "phone": "9812345678",
+      "email": "bibek.shrestha@gmail.com",
+      "province": "Gandaki Province",
+      "district": "Nawalparasi",
+      "municipality": "Binayi Triveni Rural Municipality",
+      "ward": "2",
+      "tole": "Dumkibas Main Bazaar",
+      "totalOrders": 3,
+      "lifetimeSpend": 2997,
+      "lastOrderDate": "2026-08-27T07:03:57.337Z",
+      "status": "Active"
+    },
+    {
+      "id": "cust-9846011223",
+      "name": "Pooja Gurung",
+      "phone": "9846011223",
+      "email": "pooja.g@gmail.com",
+      "province": "Gandaki Province",
+      "district": "Kaski",
+      "municipality": "Pokhara Metropolitan City",
+      "ward": "6",
+      "tole": "Lakeside Street 12",
+      "totalOrders": 1,
+      "lifetimeSpend": 2298,
+      "lastOrderDate": "2026-08-26T09:40:00.000Z",
+      "status": "Active"
+    },
+    {
+      "id": "cust-9809876543",
+      "name": "Suman Thapa",
+      "phone": "9809876543",
+      "email": "suman.thapa@outlook.com",
+      "province": "Bagmati Province",
+      "district": "Kathmandu",
+      "municipality": "Kathmandu Metropolitan City",
+      "ward": "10",
+      "tole": "New Baneshwor Chowk",
+      "totalOrders": 1,
+      "lifetimeSpend": 1199,
+      "lastOrderDate": "2026-08-27T06:15:00.000Z",
+      "status": "Active"
+    },
+    {
+      "id": "cust-9841234567",
+      "name": "Aashish Paudel",
+      "phone": "9841234567",
+      "email": "aashish.p@gmail.com",
+      "province": "Gandaki Province",
+      "district": "Nawalpur",
+      "municipality": "Binayi Tribeni Rural Municipality",
+      "ward": "1",
+      "tole": "Dumkibas Bazaar",
+      "totalOrders": 1,
+      "lifetimeSpend": 1898,
+      "lastOrderDate": "2026-08-27T02:02:05.896Z",
+      "status": "Active"
+    },
+    {
+      "id": "cust-9768827327",
+      "name": "sandeep basnet",
+      "phone": "9768827327",
+      "email": "sandeepbasnetxettri@gmail.com",
+      "province": "Gandaki Province",
+      "district": "Nawalpur",
+      "municipality": "Binayi Tribeni Rural Municipality",
+      "ward": "2",
+      "tole": "dumkibas",
+      "totalOrders": 2,
+      "lifetimeSpend": 1998,
+      "lastOrderDate": "2026-08-30T13:00:00.665Z",
+      "status": "Active"
+    },
+    {
+      "id": "cust-9800000000",
+      "name": "Sandeep Basnet",
+      "phone": "9800000000",
+      "email": "",
+      "province": "Gandaki Province",
+      "district": "Nawalpur",
+      "municipality": "Binayi Tribeni Rural Municipality",
+      "ward": "2",
+      "tole": "dd",
+      "totalOrders": 2,
+      "lifetimeSpend": 3746,
+      "lastOrderDate": "2026-08-30T13:16:32.238Z",
+      "status": "Active"
+    },
+    {
+      "id": "cust-9766666666",
+      "name": "asasasa",
+      "phone": "9766666666",
+      "email": "",
+      "province": "Koshi Province",
+      "district": "Bhojpur",
+      "municipality": "Shadananda Municipality",
+      "ward": "2",
+      "tole": "as",
+      "totalOrders": 3,
+      "lifetimeSpend": 3097,
+      "lastOrderDate": "2026-08-27T07:04:51.716Z",
+      "status": "Active"
+    }
+  ],
+  "gallery": [
+    {
+      "id": 1,
+      "img": "image/1.jpg",
+      "cat": "streetwear",
+      "title": "Cyber Graphic Streetwear Tee",
+      "desc": "High-density cyber streetwear graphic print on 220 GSM bio-washed combed cotton.",
+      "tag": "DTF Print",
+      "price": 899,
+      "active": true
+    },
+    {
+      "id": 2,
+      "img": "image/2.jpg",
+      "cat": "couple",
+      "title": "King & Queen Couple Pair",
+      "desc": "Matching King & Queen royal crown printed couple pair on premium combed cotton.",
+      "tag": "Couple Special",
+      "price": 1499,
+      "active": true
+    },
+    {
+      "id": 3,
+      "img": "image/3.jpg",
+      "cat": "photo",
+      "title": "HD Portrait Photo Print",
+      "desc": "Vibrant high-definition personalized portrait photo print with skin-tone precision.",
+      "tag": "Photo Print",
+      "price": 899,
+      "active": true
+    },
+    {
+      "id": 4,
+      "img": "image/4.jpg",
+      "cat": "streetwear",
+      "title": "Vintage Oversized Anime Graphic",
+      "desc": "Aesthetic vintage Japanese anime oversized streetwear fit with drop-shoulder cut.",
+      "tag": "Oversized",
+      "price": 999,
+      "active": true
+    },
+    {
+      "id": 5,
+      "img": "image/5.jpg",
+      "cat": "events",
+      "title": "Birthday Milestone 2000s Edition",
+      "desc": "Customized birthday milestone celebration team tee with personalized year.",
+      "tag": "Birthday",
+      "price": 850,
+      "active": true
+    },
+    {
+      "id": 6,
+      "img": "image/6.jpg",
+      "cat": "nepali",
+      "title": "Nepali Typography Devanagari",
+      "desc": "Cultural Nepali Devanagari script motivational typography with gold accent.",
+      "tag": "Nepali Pride",
+      "price": 850,
+      "active": true
+    },
+    {
+      "id": 7,
+      "img": "image/7.jpg",
+      "cat": "streetwear",
+      "title": "Monochrome Black Heavy Cotton",
+      "desc": "Clean minimalist monochrome black print on 240 GSM heavy combed cotton.",
+      "tag": "Bio-Washed",
+      "price": 899,
+      "active": true
+    },
+    {
+      "id": 8,
+      "img": "image/8.jpg",
+      "cat": "events",
+      "title": "Football Tournament Jersey Tee",
+      "desc": "Sublimated and DTF sports tournament team jersey with customized name & number.",
+      "tag": "Sports Event",
+      "price": 799,
+      "active": true
+    },
+    {
+      "id": 9,
+      "img": "image/9.jpg",
+      "cat": "photo",
+      "title": "Family Photo Memory Print",
+      "desc": "Cherished high-contrast family photo memory print with archival wash resistance.",
+      "tag": "Custom Photo",
+      "price": 899,
+      "active": true
+    },
+    {
+      "id": 10,
+      "img": "image/10.jpg",
+      "cat": "couple",
+      "title": "Matching Aesthetic Heartbeat",
+      "desc": "Heartbeat pulse graphic couple matching t-shirt pair for anniversaries.",
+      "tag": "Couple",
+      "price": 1499,
+      "active": true
+    },
+    {
+      "id": 11,
+      "img": "image/11.jpg",
+      "cat": "streetwear",
+      "title": "Himalayan Outdoor Adventure Tee",
+      "desc": "Himalayan trek and mountain explorer graphics printed with fade-proof DTF ink.",
+      "tag": "Streetwear",
+      "price": 899,
+      "active": true
+    },
+    {
+      "id": 12,
+      "img": "image/12.jpg",
+      "cat": "nepali",
+      "title": "Buddha Was Born In Nepal Print",
+      "desc": "Iconic Buddha peace artwork celebrating Nepal pride and national heritage.",
+      "tag": "Nepali Pride",
+      "price": 850,
+      "active": true
+    },
+    {
+      "id": 13,
+      "img": "image/13.jpg",
+      "cat": "events",
+      "title": "College IT Festival Committee Tee",
+      "desc": "Tech fest and college event organization committee jersey with sponsor logos.",
+      "tag": "Bulk Event",
+      "price": 750,
+      "active": true
+    },
+    {
+      "id": 14,
+      "img": "image/14.jpg",
+      "cat": "streetwear",
+      "title": "Retro Typography Skull Tee",
+      "desc": "Edgy grunge streetwear typography skull tee in boxy streetwear silhouette.",
+      "tag": "Streetwear",
+      "price": 950,
+      "active": true
+    },
+    {
+      "id": 15,
+      "img": "image/15.jpg",
+      "cat": "photo",
+      "title": "Pet Memorial HD Print",
+      "desc": "Full-color HD pet portrait print on soft breathable bio-washed white cotton.",
+      "tag": "Custom Photo",
+      "price": 899,
+      "active": true
+    },
+    {
+      "id": 16,
+      "img": "image/16.jpg",
+      "cat": "couple",
+      "title": "Mr & Mrs Matching Hoodies",
+      "desc": "Warm fleece couple hoodies with Mr. & Mrs. typography and anniversary dates.",
+      "tag": "Couple",
+      "price": 1699,
+      "active": true
+    },
+    {
+      "id": 17,
+      "img": "image/17.jpg",
+      "cat": "streetwear",
+      "title": "Minimalist Left Chest Logo",
+      "desc": "Understated clean left pocket branding print on executive combed tee.",
+      "tag": "Pocket Print",
+      "price": 799,
+      "active": true
+    },
+    {
+      "id": 18,
+      "img": "image/18.jpg",
+      "cat": "nepali",
+      "title": "Bir Gorkhali Traditional Crest",
+      "desc": "Bravery and heritage Gorkhali emblem print with crossed Khukuri graphics.",
+      "tag": "Nepali Pride",
+      "price": 850,
+      "active": true
+    },
+    {
+      "id": 19,
+      "img": "image/19.jpg",
+      "cat": "events",
+      "title": "Youth Club Dumkibas Volunteer Tee",
+      "desc": "Dumkibas local youth club volunteer event apparel with bold lettering.",
+      "tag": "Community",
+      "price": 750,
+      "active": true
+    },
+    {
+      "id": 20,
+      "img": "image/20.jpg",
+      "cat": "streetwear",
+      "title": "Dark Acid Wash Streetwear",
+      "desc": "Vintage acid wash boxy oversized graphic tee with distressed finish.",
+      "tag": "Streetwear",
+      "price": 999,
+      "active": true
+    },
+    {
+      "id": 21,
+      "img": "image/21.jpg",
+      "cat": "couple",
+      "title": "Soulmate Matching Minimal Tee",
+      "desc": "Minimalist soulmate lock-and-key design pair on 100% combed cotton.",
+      "tag": "Couple",
+      "price": 1499,
+      "active": true
+    },
+    {
+      "id": 22,
+      "img": "image/22.jpg",
+      "cat": "photo",
+      "title": "Anniversary Photo Collage Print",
+      "desc": "Collage of anniversary photos with golden date lettering and hearts.",
+      "tag": "Photo Print",
+      "price": 950,
+      "active": true
+    },
+    {
+      "id": 23,
+      "img": "image/23.jpg",
+      "cat": "streetwear",
+      "title": "Tokyo Vaporwave Cyberpunk",
+      "desc": "Neon cyberpunk futuristic graphic tee with vivid magenta and cyan inks.",
+      "tag": "Streetwear",
+      "price": 899,
+      "active": true
+    },
+    {
+      "id": 24,
+      "img": "image/24.jpg",
+      "cat": "nepali",
+      "title": "Namaste Traditional Script Tee",
+      "desc": "Warm cultural Namaste greeting in stylized lettering on midnight black.",
+      "tag": "Nepali Pride",
+      "price": 850,
+      "active": true
+    },
+    {
+      "id": 25,
+      "img": "image/25.jpg",
+      "cat": "events",
+      "title": "Music Band Tour Concert Tee",
+      "desc": "Rock and pop concert event merchandise tee with back tour dates.",
+      "tag": "Band Merch",
+      "price": 850,
+      "active": true
+    },
+    {
+      "id": 26,
+      "img": "image/26.jpg",
+      "cat": "streetwear",
+      "title": "Graffiti Spray Art Typography",
+      "desc": "Urban street art graffiti splash print with textured crackle effect.",
+      "tag": "Streetwear",
+      "price": 899,
+      "active": true
+    },
+    {
+      "id": 27,
+      "img": "image/27.jpg",
+      "cat": "couple",
+      "title": "His Queen & Her King Crown Set",
+      "desc": "Crown-themed romantic couple outfit printed with metallic gold ink.",
+      "tag": "Couple",
+      "price": 1499,
+      "active": true
+    },
+    {
+      "id": 28,
+      "img": "image/28.jpg",
+      "cat": "events",
+      "title": "Dumkibas Marathon Finisher Tee",
+      "desc": "Official athletic marathon finisher running tee with quick-dry fabric.",
+      "tag": "Event Sports",
+      "price": 799,
+      "active": true
+    },
+    {
+      "id": 29,
+      "img": "image/29.jpg",
+      "cat": "photo",
+      "title": "High-Contrast Monochrome Portrait",
+      "desc": "Artistic black-and-white portrait print with smooth gradients.",
+      "tag": "Photo Print",
+      "price": 899,
+      "active": true
+    },
+    {
+      "id": 30,
+      "img": "image/30.jpg",
+      "cat": "streetwear",
+      "title": "Oversized Boxy Dropped Shoulder",
+      "desc": "Heavy 240 GSM boxy streetwear tee with relaxed oversized comfort.",
+      "tag": "Oversized",
+      "price": 999,
+      "active": true
+    },
+    {
+      "id": 31,
+      "img": "image/31.jpg",
+      "cat": "nepali",
+      "title": "Nepal Flag Geometric Crest",
+      "desc": "Double-triangle Nepal flag modern geometric print with national colors.",
+      "tag": "Nepali Pride",
+      "price": 850,
+      "active": true
+    }
+  ]
+}
