@@ -28,7 +28,7 @@ const studioState = {
   tshirtType: "Round Neck Classic",
   baseColor: "#18181B",
   baseColorName: "Midnight Black",
-  customText: "SKB STREETWEAR",
+  customText: "YOUR NAME HERE",
   fontFamily: "'Outfit', sans-serif",
   textColor: "#FFFFFF",
   photoDataUrl: null,
@@ -857,7 +857,7 @@ async function submitCustomRequestAsync(item) {
         estimatedPrice: calculateStudioPrice()
       })
     });
-  } catch (e) {}
+  } catch (e) { }
 }
 
 function handleCustomWhatsAppOrder() {
@@ -1795,7 +1795,7 @@ function renderToleSuggestions(query) {
 function selectTole(toleName) {
   const cleanName = (toleName || "").trim();
   currentAddressState.tole = cleanName;
-  
+
   const toleInput = document.getElementById("custTole");
   if (toleInput) {
     toleInput.value = cleanName;
@@ -2026,7 +2026,7 @@ function loadSavedCustomerAddress() {
         };
       }
     }
-  } catch (e) {}
+  } catch (e) { }
 }
 
 // ---------------------------------------------------------------------------
@@ -2498,15 +2498,15 @@ function renderTrackingCard(order) {
       ` : `
         <div class="tracking-step-timeline">
           ${steps.map((step, idx) => {
-            const isDone = idx < currIndex;
-            const isActive = idx === currIndex;
-            return `
+    const isDone = idx < currIndex;
+    const isActive = idx === currIndex;
+    return `
               <div class="tracking-step ${isDone ? 'completed' : ''} ${isActive ? 'active' : ''}">
                 <div class="step-circle">${isDone ? '✓' : (idx + 1)}</div>
                 <div class="step-label">${step}</div>
               </div>
             `;
-          }).join('')}
+  }).join('')}
         </div>
       `}
 
@@ -2531,10 +2531,10 @@ function openQuickView(productId) {
   const product = PRODUCTS_DATA.find(p => p.id === productId);
   if (!product) return;
 
-    let selectedQuickSize = (product.sizes && product.sizes[0]) || "M";
+  let selectedQuickSize = (product.sizes && product.sizes[0]) || "M";
 
-    const content = document.getElementById("quickViewContent");
-    content.innerHTML = `
+  const content = document.getElementById("quickViewContent");
+  content.innerHTML = `
       <div class="quick-view-img-col">
         <img src="${product.image}" alt="${escapeHtml(product.name)}" class="quick-view-img">
       </div>
@@ -2574,26 +2574,26 @@ function openQuickView(productId) {
       </div>
     `;
 
-    document.querySelectorAll("#quickViewSizes .size-pill").forEach(p => {
-      p.addEventListener("click", () => {
-        document.querySelectorAll("#quickViewSizes .size-pill").forEach(b => b.classList.remove("active"));
-        p.classList.add("active");
-        selectedQuickSize = p.dataset.size;
-      });
+  document.querySelectorAll("#quickViewSizes .size-pill").forEach(p => {
+    p.addEventListener("click", () => {
+      document.querySelectorAll("#quickViewSizes .size-pill").forEach(b => b.classList.remove("active"));
+      p.classList.add("active");
+      selectedQuickSize = p.dataset.size;
     });
+  });
 
-    document.getElementById("quickViewAddBtn").onclick = () => {
-      quickAddToCart(product.id, selectedQuickSize);
-      closeQuickView();
-    };
+  document.getElementById("quickViewAddBtn").onclick = () => {
+    quickAddToCart(product.id, selectedQuickSize);
+    closeQuickView();
+  };
 
-    document.getElementById("quickViewBuyBtn").onclick = () => {
-      buyNowProduct(product.id, selectedQuickSize);
-    };
+  document.getElementById("quickViewBuyBtn").onclick = () => {
+    buyNowProduct(product.id, selectedQuickSize);
+  };
 
-    const modal = document.getElementById("quickViewModalOverlay");
-    modal.classList.add("active");
-    document.body.style.overflow = "hidden";
+  const modal = document.getElementById("quickViewModalOverlay");
+  modal.classList.add("active");
+  document.body.style.overflow = "hidden";
 }
 
 function closeQuickView() {
