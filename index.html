@@ -123,7 +123,6 @@
         <span></span>
       </button>
     </div>
-    </div>
 
     <!-- Live Search Bar Dropdown -->
     <div class="search-bar-dropdown" id="searchDropdown">
@@ -146,13 +145,16 @@
         <span class="brand-name">SKB<span class="dot">.</span>PRINTING</span>
         <span class="brand-sub">Dumkibas, Nepal</span>
       </div>
-      <button class="drawer-close-btn" id="drawerCloseBtn">&times;</button>
+      <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close Mobile Menu">&times;</button>
     </div>
     <ul class="mobile-nav-list">
       <li><a href="#home" class="mobile-nav-link">🏠 Home</a></li>
       <li><a href="#products" class="mobile-nav-link">👕 Shop All T-Shirts</a></li>
-      <li><a href="#custom-studio" class="mobile-nav-link">✨ Design Your Own (Studio)</a></li>
-      <li><a href="#about" class="mobile-nav-link">ℹ️ About Us</a></li>
+      <li><a href="#custom-studio" class="mobile-nav-link">✨ Custom Studio (Design Your Own)</a></li>
+      <li><a href="javascript:void(0)" onclick="openTrackOrderModal(); closeMobileDrawer();" class="mobile-nav-link">🚚 Track Nepal Order</a></li>
+      <li><a href="javascript:void(0)" onclick="openSizeGuideModal(); closeMobileDrawer();" class="mobile-nav-link">📏 T-Shirt Size Guide</a></li>
+      <li><a href="#why-skb" class="mobile-nav-link">⭐ Why Choose SKB</a></li>
+      <li><a href="#about" class="mobile-nav-link">ℹ️ About Us (Dumkibas Studio)</a></li>
       <li><a href="#contact" class="mobile-nav-link">📍 Contact &amp; Location</a></li>
       <li><a href="admin.html" class="mobile-nav-link">🔐 Admin Dashboard</a></li>
     </ul>

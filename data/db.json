@@ -24,7 +24,7 @@
     "isFirstLogin": false,
     "updatedAt": "2026-08-27T02:04:39.775Z"
   },
-  "orderCounter": 114,
+  "orderCounter": 115,
   "products": [
     {
       "id": "skb-001",
@@ -310,7 +310,50 @@
       "updatedAt": "2026-08-27T07:00:00.000Z"
     }
   ],
-  "orders": [],
+  "orders": [
+    {
+      "id": "SKB-2026-000115",
+      "customer": {
+        "name": "Sandeep Basnet",
+        "phone": "9840488645",
+        "email": ""
+      },
+      "address": {
+        "province": "Gandaki Province",
+        "district": "Nawalpur",
+        "municipality": "Binayi Tribeni Rural Municipality",
+        "ward": "2",
+        "tole": "dumk",
+        "formatted": "dumk, Ward 2, Binayi Tribeni Rural Municipality, Nawalpur, Gandaki Province, Nepal"
+      },
+      "items": [
+        {
+          "productId": "gal-2",
+          "name": "King & Queen Couple Pair",
+          "size": "M",
+          "color": "Midnight Black",
+          "price": 1499,
+          "quantity": 1,
+          "total": 1499,
+          "image": "image/2.jpg",
+          "customText": "",
+          "placement": "",
+          "font": "",
+          "textColor": ""
+        }
+      ],
+      "subtotal": 1499,
+      "deliveryFee": 100,
+      "discount": 0,
+      "grandTotal": 1599,
+      "paymentMethod": "Cash on Delivery (COD)",
+      "status": "Pending",
+      "notes": "",
+      "courierNotes": "",
+      "createdAt": "2026-09-05T11:43:16.006Z",
+      "updatedAt": "2026-09-05T11:43:16.007Z"
+    }
+  ],
   "customRequests": [
     {
       "id": "CUST-737738",
@@ -593,6 +636,21 @@
       "totalOrders": 3,
       "lifetimeSpend": 3097,
       "lastOrderDate": "2026-08-27T07:04:51.716Z",
+      "status": "Active"
+    },
+    {
+      "id": "cust-9840488645",
+      "name": "Sandeep Basnet",
+      "phone": "9840488645",
+      "email": "",
+      "province": "Gandaki Province",
+      "district": "Nawalpur",
+      "municipality": "Binayi Tribeni Rural Municipality",
+      "ward": "2",
+      "tole": "dumk",
+      "totalOrders": 1,
+      "lifetimeSpend": 1599,
+      "lastOrderDate": "2026-09-05T11:43:16.007Z",
       "status": "Active"
     }
   ],

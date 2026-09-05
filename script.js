@@ -2612,37 +2612,61 @@ function initFaqAccordion() {
   });
 }
 
+function closeMobileDrawer() {
+  const mobileDrawer = document.getElementById("mobileDrawer");
+  const drawerOverlay = document.getElementById("drawerOverlay");
+  mobileDrawer?.classList.remove("active");
+  drawerOverlay?.classList.remove("active");
+  document.body.classList.remove("modal-open");
+  document.body.style.overflow = "";
+}
+
+function openMobileDrawer() {
+  const mobileDrawer = document.getElementById("mobileDrawer");
+  const drawerOverlay = document.getElementById("drawerOverlay");
+  mobileDrawer?.classList.add("active");
+  drawerOverlay?.classList.add("active");
+  document.body.classList.add("modal-open");
+  document.body.style.overflow = "hidden";
+}
+
+function openSizeGuideModal() {
+  const modal = document.getElementById("sizeGuideModalOverlay");
+  if (modal) {
+    modal.classList.add("active");
+    document.body.classList.add("modal-open");
+    document.body.style.overflow = "hidden";
+  }
+}
+
+function closeSizeGuideModal() {
+  const modal = document.getElementById("sizeGuideModalOverlay");
+  if (modal) {
+    modal.classList.remove("active");
+    document.body.classList.remove("modal-open");
+    document.body.style.overflow = "";
+  }
+}
+
 function initNavigationEventListeners() {
   const mobileBtn = document.getElementById("mobileMenuBtn");
   const drawerCloseBtn = document.getElementById("drawerCloseBtn");
-  const mobileDrawer = document.getElementById("mobileDrawer");
   const drawerOverlay = document.getElementById("drawerOverlay");
 
-  const toggle = (open) => {
-    if (open) {
-      mobileDrawer?.classList.add("active");
-      drawerOverlay?.classList.add("active");
-      document.body.style.overflow = "hidden";
-    } else {
-      mobileDrawer?.classList.remove("active");
-      drawerOverlay?.classList.remove("active");
-      document.body.style.overflow = "";
-    }
-  };
+  if (mobileBtn) mobileBtn.addEventListener("click", () => openMobileDrawer());
+  if (drawerCloseBtn) drawerCloseBtn.addEventListener("click", () => closeMobileDrawer());
+  if (drawerOverlay) drawerOverlay.addEventListener("click", () => closeMobileDrawer());
 
-  if (mobileBtn) mobileBtn.addEventListener("click", () => toggle(true));
-  if (drawerCloseBtn) drawerCloseBtn.addEventListener("click", () => toggle(false));
-  if (drawerOverlay) drawerOverlay.addEventListener("click", () => toggle(false));
+  document.querySelectorAll(".mobile-nav-link").forEach(l => l.addEventListener("click", () => closeMobileDrawer()));
 
-  document.querySelectorAll(".mobile-nav-link").forEach(l => l.addEventListener("click", () => toggle(false)));
+  // Mobile Bottom Navigation Cart Trigger
+  document.getElementById("mobileBottomCartBtn")?.addEventListener("click", () => {
+    openCartDrawer();
+  });
 
   // Size Guide
-  document.getElementById("openSizeGuideBtn")?.addEventListener("click", () => {
-    document.getElementById("sizeGuideModalOverlay")?.classList.add("active");
-  });
-  document.getElementById("sizeGuideCloseBtn")?.addEventListener("click", () => {
-    document.getElementById("sizeGuideModalOverlay")?.classList.remove("active");
-  });
+  document.getElementById("openSizeGuideBtn")?.addEventListener("click", openSizeGuideModal);
+  document.getElementById("sizeGuideCloseBtn")?.addEventListener("click", closeSizeGuideModal);
 }
 
 // WhatsApp Direct Product Action
